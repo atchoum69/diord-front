@@ -1,6 +1,6 @@
 <h2>Liste des produits</h2>
-<ul class="products">
-  <li *ngFor="let product of products">
-    <span class="badge">{{product.id}}</span> {{product.description}}
+<ul class="list-group">
+  <li *ngFor="let product of products" class="list-group-item">
+    {{product.name}} - {{product.description}}
   </li>
 </ul>
