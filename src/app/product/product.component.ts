@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-export class Product {
-  name: string;
-  description: string;
-  codePaquet: string;
-  idAppli: string;
-}
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-product',
