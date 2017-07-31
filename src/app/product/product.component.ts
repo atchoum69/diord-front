@@ -11,6 +11,7 @@ import { ProductService } from '../service/product.service';
 })
 export class ProductComponent implements OnInit {
   products: Product[];
+  selectedProduct: Product;
 
   constructor(private productService: ProductService) { }
 
@@ -20,6 +21,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+  }
+
+  onSelect(product: Product): void {
+    this.selectedProduct = product;
   }
 
 }
