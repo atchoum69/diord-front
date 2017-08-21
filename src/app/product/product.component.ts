@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../model/product';
 
 import { ProductService } from '../service/product.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-product',
@@ -13,10 +14,17 @@ export class ProductComponent implements OnInit {
   products: Product[];
   selectedProduct: Product;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+    private authenticationService: AuthenticationService) { }
 
   getProducts(): void {
-    this.productService.getProducts().then(products => this.products = products);
+    //this.productService.getMockProducts().then(products => this.products = products);
+    this.authenticationService.login('admin', 'admin').then(response => {
+      this.productService.getProducts(this.authenticationService.token).then(products => {
+        //console.log(products);
+        this.products = products
+      });
+    });
   }
 
   ngOnInit() {
