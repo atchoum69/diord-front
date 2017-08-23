@@ -8,6 +8,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductService } from './service/product.service';
 import { AuthenticationService } from './service/authentication.service';
 
+import { AppConfig } from './app.config';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,10 @@ import { AuthenticationService } from './service/authentication.service';
   ],
   providers: [
     ProductService,
-    AuthenticationService
+    AuthenticationService,
+    { provide: "urlServiceAuthentification", useValue: AppConfig.URL_API_AUTHENTIFICATION },
+    { provide: "urlServiceAppli", useValue: AppConfig.URL_API_MICROSERVICE_APPLI },
+    { provide: "modeMock", useValue: AppConfig.MODE_MOCK_ENABLED },
   ],
   bootstrap: [AppComponent]
 })

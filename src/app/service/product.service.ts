@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/toPromise'
@@ -9,20 +9,14 @@ import { PRODUCTS } from './mock-products';
 @Injectable()
 export class ProductService {
 
-  // TODO : configurer l'url du service
-  //protected basePath = 'http://localhost:8080/diordapplimiddle/api';
-  protected basePath = 'http://localhost:8081/api';
-
-  constructor(private http: Http) { }
+  constructor(private http: Http, @Inject("urlServiceAppli") private urlService: string) { }
 
   getMockProducts(): Promise<Product[]> {
     return Promise.resolve(PRODUCTS);
   }
 
   getProducts(token: string): Promise<Product[]> {
-    const path = this.basePath + '/produits';
-
-    console.log('getProducts : ' + path);
+    console.log('getProducts : ' + this.urlService);
 
     let headers = new Headers({
       'Accept': 'application/json',
@@ -33,10 +27,10 @@ export class ProductService {
       headers: headers,
       body: '',
       method: RequestMethod.Get,
-      url: path
+      url: this.urlService
     });
 
-    return this.http.get(path, options)
+    return this.http.get(this.urlService, options)
       .toPromise()
       .then(response => {
         //console.log(response.json());

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { Product } from '../model/product';
 
@@ -15,16 +15,20 @@ export class ProductComponent implements OnInit {
   selectedProduct: Product;
 
   constructor(private productService: ProductService,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    @Inject("modeMock") private modeBouchon: boolean) { }
 
   getProducts(): void {
-    //this.productService.getMockProducts().then(products => this.products = products);
-    this.authenticationService.login('admin', 'admin').then(response => {
-      this.productService.getProducts(this.authenticationService.token).then(products => {
-        //console.log(products);
-        this.products = products
+    if (this.modeBouchon) {
+      this.productService.getMockProducts().then(products => this.products = products);
+    } else {
+      this.authenticationService.login('admin', 'admin').then(response => {
+        this.productService.getProducts(this.authenticationService.token).then(products => {
+          //console.log(products);
+          this.products = products
+        });
       });
-    });
+    }
   }
 
   ngOnInit() {

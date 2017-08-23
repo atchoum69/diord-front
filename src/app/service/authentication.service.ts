@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise'
@@ -7,10 +7,7 @@ import 'rxjs/add/operator/toPromise'
 export class AuthenticationService {
   public token: string;
 
-  // TODO : configurer l'url du service
-  protected authenticateUrl = 'http://localhost:8080/api/authenticate';
-
-  constructor(private http: Http) {
+  constructor(private http: Http, @Inject("urlServiceAuthentification") private authenticateUrl: string) {
     // set token if saved in local storage
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
