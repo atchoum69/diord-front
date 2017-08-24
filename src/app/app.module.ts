@@ -2,12 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+// composants
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 
+// services
 import { ProductService } from './service/product.service';
 import { AuthenticationService } from './service/authentication.service';
 
+// modules
+import { AppRoutingModule } from './app-routing.module';
+
+// Configuration
 import { AppConfig } from './app.config';
 
 @NgModule({
@@ -17,7 +23,8 @@ import { AppConfig } from './app.config';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [
     ProductService,
