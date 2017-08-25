@@ -39,6 +39,10 @@ export class ProductService {
       .catch(this.handleError);
   }
 
+  getMockProduct(id: number): Promise<Product> {
+    return Promise.resolve(PRODUCTS.find(product => product.id === id));
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('ProductService: An error occurred', error);
     return Promise.reject(error.message || error);

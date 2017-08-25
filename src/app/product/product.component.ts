@@ -12,7 +12,6 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class ProductComponent implements OnInit {
   products: Product[];
-  selectedProduct: Product;
 
   constructor(private productService: ProductService,
     private authenticationService: AuthenticationService,
@@ -33,10 +32,6 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-  }
-
-  onSelect(product: Product): void {
-    this.selectedProduct = product;
   }
 
 }

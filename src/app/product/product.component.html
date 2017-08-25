@@ -1,9 +1,29 @@
 <h2>Liste des produits</h2>
-<div class="list-group">
-  <a href="#" *ngFor="let product of products"
-    [class.active]="product === selectedProduct"
-    class="list-group-item list-group-item-action"
-    (click)="onSelect(product)">
-      {{product.name}} - {{product.description}}
-  </a>
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+  <table class="table table-hover">
+    <thead class="table-inverse">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th class="hidden-xs-down">Description</th>
+        <th>Code Paquet</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.name}}</td>
+        <td class="hidden-xs-down">{{product.description}}</td>
+        <td>{{product.codePaquet}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" [routerLink]="['/product', product.id]">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<div class="col-sm-2"></div>
