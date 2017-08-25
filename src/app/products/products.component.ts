@@ -6,11 +6,11 @@ import { ProductService } from '../service/product.service';
 import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   products: Product[];
 
   constructor(private productService: ProductService,

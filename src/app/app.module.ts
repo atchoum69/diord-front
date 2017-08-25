@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 // composants
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
+import { ProductsComponent } from './products/products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 
 // services
@@ -21,7 +21,7 @@ import { AppConfig } from './app.config';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
+    ProductsComponent,
     EditProductComponent
   ],
   imports: [
