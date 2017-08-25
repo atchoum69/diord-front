@@ -4,7 +4,9 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Id: </label>
     <div class="col-10">
-      {{product.id}}
+      <p class="form-control-static">
+        {{product.id}}
+      </p>
     </div>
   </div>
   <div class="form-group row">
@@ -26,7 +28,8 @@
     </div>
   </div>
   <div>
-    <button (click)="goBack()">Back</button>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+    <button type="submit" class="btn btn-primary">Save</button>
   </div>
 </div>
 <div class="col-sm-2"></div>
