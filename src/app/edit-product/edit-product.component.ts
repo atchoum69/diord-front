@@ -25,16 +25,31 @@ export class EditProductComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-      if (this.modeBouchon) {
-        this.route.paramMap
-          .switchMap((params: ParamMap) => this.productService.getMockProduct(+params.get('id')))
-          .subscribe(product => this.product = product);
-      } else {
-        // TODO : a implementer
-      }
+    let id: number = +this.route.snapshot.paramMap.get('id');
+    this.getProduit(id);
+  }
+
+  getProduit(id: number): void {
+    if (this.modeBouchon) {
+      this.productService.getMockProduct(id)
+      .then(product => this.product = product);
+    } else {
+      this.productService.getProduct(this.authenticationService.token, id)
+      .then(product => this.product = product);
+    }
   }
 
   goBack(): void {
+    this.location.back();
+  }
+
+  updateProduct(): void {
+    if (this.modeBouchon) {
+      this.productService.updateMockProduct(this.product);
+    } else {
+      this.productService.updateProduct(this.authenticationService.token,
+        this.product);
+    }
     this.location.back();
   }
 
