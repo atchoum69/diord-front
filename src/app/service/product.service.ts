@@ -62,7 +62,7 @@ export class ProductService {
     return this.http.get(url, options)
       .toPromise()
       .then(response => {
-        console.log(response.json());
+        //console.log(response.json());
         return Promise.resolve(response.json() as Product)
       })
       .catch(this.handleError);
@@ -96,7 +96,7 @@ export class ProductService {
     return this.http.put(this.urlService, body, options)
       .toPromise()
       .then(response => {
-        console.log(response.json());
+        //console.log(response.json());
         return Promise.resolve(response.json() as Product)
       })
       .catch(this.handleError);

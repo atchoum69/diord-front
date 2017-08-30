@@ -1,4 +1,4 @@
-<h2>Mise à jour du produit '{{product.name}}'</h2>
+<h2 *ngIf="product">Mise à jour du produit '{{product.name}}'</h2>
 <div class="col-sm-2"></div>
 <div  class="col-sm-8" *ngIf="product">
   <div class="form-group row">
