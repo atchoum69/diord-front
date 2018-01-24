@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #f2f4f5!important;
+}
+
+#theme-header {
+  height: 110px;
+  font-family: "Roboto-Medium";
+}
+
+#theme-header .top-header {
+  height: 20px;
+}
+
+#theme-header .navbar-default {
+  background-color: #ffdc83;
+}
+
+#theme-header .navbar-default .nav-burger {
+  background-color: #efc040;
+}
+
+#theme-header .navbar-default .img-logo {
+  width: 60px;
+  margin: 20px 5px 0 25px;
+}
+
+#theme-header .navbar-default .img-logo div {
+  color: #ffffff;
+}
+
+#theme-header .navbar-default .img-logo div.fa-telegram {
+  width: 100%;
+  font-size: 40px;
+}
+
+#theme-header .navbar-default .nav-burger div {
+  color: #ffffff;
+}
+
+#theme-header .navbar-default .nav-burger div.fa-bars {
+  width: 100%;
+  font-size: 32px;
+}
+
+#theme-header .navbar-default .nav-burger div.title-burger {
+  font-size: 11px;
+}
+
+#theme-header .navbar-default .verticalbar {
+  width: 2px;
+  height: 50px;
+  background-color: #ffffff;
+  position: relative;
+  top: 15px;
+}
+
+#theme-header .navbar-default .content-welcome {
+  color: #ffffff;
+  margin: 15px 5px 0 15px;
+}
+
+#theme-header .navbar-default .content-welcome .title-first-line,
+#theme-header .navbar-default .content-welcome .title-second-line {
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#theme-header .navbar-default .content-welcome .title-second-line {
+  font-size: 20px;
+}
+
+.pull-left {
+  float: left;
+}
+
+@media (min-width: 640px) {
+  #theme-header .navbar-default {
+    height: 80px;
+  }
+
+  #theme-header .navbar-default .nav-burger {
+    height: 80px;
+    width: 72px;
+    padding: 15px 20px;
+  }
+}
