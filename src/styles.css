@@ -39,13 +39,9 @@ body {
   color: #ffffff;
 }
 
-#theme-header .navbar-default .nav-burger div.fa-bars {
+#theme-header .navbar-default .nav-burger div.fa-home {
   width: 100%;
   font-size: 32px;
-}
-
-#theme-header .navbar-default .nav-burger div.title-burger {
-  font-size: 11px;
 }
 
 #theme-header .navbar-default .verticalbar {
@@ -75,14 +71,12 @@ body {
   float: left;
 }
 
-@media (min-width: 640px) {
-  #theme-header .navbar-default {
-    height: 80px;
-  }
+#theme-header .navbar-default {
+  height: 80px;
+}
 
-  #theme-header .navbar-default .nav-burger {
-    height: 80px;
-    width: 72px;
-    padding: 15px 20px;
-  }
+#theme-header .navbar-default .nav-burger {
+  height: 80px;
+  width: 72px;
+  padding: 25px 20px 15px 20px;
 }
