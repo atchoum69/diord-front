@@ -1,0 +1,10 @@
+:host-context h2 {
+  color: #efc040;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding: 2px 20px;
+}
+
+body.theme-green :host-context h2 {
+  color: #c9e752;
+}

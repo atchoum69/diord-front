@@ -17,8 +17,16 @@ body {
   background-color: #ffdc83;
 }
 
+body.theme-green #theme-header .navbar-default {
+  background-color: #f0ec5a;
+}
+
 #theme-header .navbar-default .nav-burger {
   background-color: #efc040;
+}
+
+body.theme-green #theme-header .navbar-default .nav-burger {
+  background-color: #c9e752;
 }
 
 #theme-header .navbar-default .img-logo {
@@ -33,6 +41,12 @@ body {
 #theme-header .navbar-default .img-logo div.fa-telegram {
   width: 100%;
   font-size: 40px;
+}
+
+@media (max-width: 350px) {
+  #theme-header .navbar-default .img-logo {
+    display: none;
+  }
 }
 
 #theme-header .navbar-default .nav-burger div {
@@ -65,6 +79,7 @@ body {
 
 #theme-header .navbar-default .content-welcome .title-second-line {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .pull-left {
