@@ -1,35 +1,43 @@
-<h2 *ngIf="product">Mise à jour du produit '{{product.name}}'</h2>
-<div class="col-sm-2"></div>
-<div  class="col-sm-8" *ngIf="product">
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Id: </label>
-    <div class="col-10">
+<div *ngIf="product; then exist else notexist"></div>
+<ng-template #exist><h2>Mise à jour du produit '{{product.name}}'</h2></ng-template>
+<ng-template #notexist><h2>Création d'un produit</h2></ng-template>
+<div  class="col-12">
+  <div class="form-group row" *ngIf="product">
+    <label class="col-4 col-form-label">Id: </label>
+    <div class="col-8">
       <p class="form-control-static">
         {{product.id}}
       </p>
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-2 col-form-label">Name: </label>
-    <div class="col-10">
-      <input [(ngModel)]="product.name" class="form-control" placeholder="Name" />
+    <label class="col-4 col-form-label">IdAppli: </label>
+    <div class="col-8">
+      <input [(ngModel)]="product.idAppli" class="form-control" placeholder="IdAppli" />
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-2 col-form-label">Description: </label>
-    <div class="col-10">
+    <label class="col-4 col-form-label">Nom: </label>
+    <div class="col-8">
+      <input [(ngModel)]="product.name" class="form-control" placeholder="Nom" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label">Description: </label>
+    <div class="col-8">
       <input [(ngModel)]="product.description" class="form-control" placeholder="Description" />
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-2 col-form-label">CodePaquet: </label>
-    <div class="col-10">
+    <label class="col-4 col-form-label">CodePaquet: </label>
+    <div class="col-8">
       <input [(ngModel)]="product.codePaquet" class="form-control" placeholder="CodePaquet" />
     </div>
   </div>
   <div>
-    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
-    <button type="submit" class="btn btn-primary" (click)="updateProduct()">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Retour</button>
+    <div *ngIf="product; then update else create"></div>
+    <ng-template #update><button type="submit" class="btn btn-primary" (click)="updateProduct()">Enregistre</button></ng-template>
+    <ng-template #create><button type="submit" class="btn btn-primary" (click)="createProduct()">Enregistre</button></ng-template>
   </div>
 </div>
-<div class="col-sm-2"></div>

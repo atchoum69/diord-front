@@ -1,6 +1,5 @@
 <h2>Liste des produits</h2>
-<div class="col-sm-2"></div>
-<div class="col-sm-8">
+<div class="col-12">
   <table class="table table-hover">
     <thead class="table-inverse">
       <tr>
@@ -25,5 +24,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="newProduct">
+    <button type="button" class="btn btn-primary" [routerLink]="['/product', 0]">
+      <i class="fa fa-plus" aria-hidden="true"></i> Nouveau produit
+    </button>
+  </div>
 </div>
-<div class="col-sm-2"></div>

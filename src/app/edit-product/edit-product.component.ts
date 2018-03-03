@@ -53,6 +53,16 @@ export class EditProductComponent implements OnInit {
     this.location.back();
   }
 
+  createProduct(): void {
+    if (this.modeBouchon) {
+      this.productService.createMockProduct(this.product);
+    } else {
+      this.productService.createProduct(this.authenticationService.token,
+        this.product);
+    }
+    this.location.back();
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('EditProductComponent: An error occurred', error);
     return Promise.reject(error.message || error);

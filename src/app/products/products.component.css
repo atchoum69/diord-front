@@ -8,3 +8,8 @@
 body.theme-green :host-context h2 {
   color: #c9e752;
 }
+
+:host-context div.newProduct {
+  text-align: center;
+  margin-bottom: 20px;
+}

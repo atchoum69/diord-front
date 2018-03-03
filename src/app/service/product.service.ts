@@ -102,6 +102,37 @@ export class ProductService {
       .catch(this.handleError);
   }
 
+  createMockProduct(product: Product): void {
+    PRODUCTS.push(product);
+  }
+
+  createProduct(token: string, product: Product): Promise<Product> {
+    console.log('createProduct : ' + this.urlService);
+
+    let headers = new Headers({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let body = JSON.stringify(product);
+
+    let options = new RequestOptions({
+      headers: headers,
+      body: body,
+      method: RequestMethod.Post,
+      url: this.urlService
+    });
+
+    return this.http.post(this.urlService, body, options)
+      .toPromise()
+      .then(response => {
+        //console.log(response.json());
+        return Promise.resolve(response.json() as Product)
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('ProductService: An error occurred', error);
     return Promise.reject(error.message || error);
