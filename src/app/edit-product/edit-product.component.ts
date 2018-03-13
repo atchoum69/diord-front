@@ -18,6 +18,8 @@ export class EditProductComponent implements OnInit {
 
   product: Product;
 
+  modeCreation: boolean = false;
+
   constructor(private productService: ProductService,
     private authenticationService: AuthenticationService,
     @Inject("modeMock") private modeBouchon: boolean,
@@ -26,7 +28,13 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit() {
     let id: number = +this.route.snapshot.paramMap.get('id');
-    this.getProduit(id);
+    if (id === 0) {
+      // on ne trouve pas le produit, donc on est en mode creation
+      this.modeCreation = true;
+      this.product = new Product();
+    } else {
+      this.getProduit(id);
+    }
   }
 
   getProduit(id: number): void {

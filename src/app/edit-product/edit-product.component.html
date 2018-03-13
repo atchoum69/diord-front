@@ -1,4 +1,4 @@
-<div *ngIf="product; then exist else notexist"></div>
+<div *ngIf="modeCreation; then notexist else exist"></div>
 <ng-template #exist><h2>Mise à jour du produit '{{product.name}}'</h2></ng-template>
 <ng-template #notexist><h2>Création d'un produit</h2></ng-template>
 <div  class="col-12">
@@ -36,8 +36,8 @@
   </div>
   <div>
     <button type="button" class="btn btn-secondary" (click)="goBack()">Retour</button>
-    <div *ngIf="product; then update else create"></div>
-    <ng-template #update><button type="submit" class="btn btn-primary" (click)="updateProduct()">Enregistre</button></ng-template>
-    <ng-template #create><button type="submit" class="btn btn-primary" (click)="createProduct()">Enregistre</button></ng-template>
+    <div *ngIf="modeCreation; then createButton else updateButton"></div>
+    <ng-template #updateButton><button type="submit" class="btn btn-primary" (click)="updateProduct()">Enregistre</button></ng-template>
+    <ng-template #createButton><button type="submit" class="btn btn-primary" (click)="createProduct()">Enregistre</button></ng-template>
   </div>
 </div>

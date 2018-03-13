@@ -103,6 +103,13 @@ export class ProductService {
   }
 
   createMockProduct(product: Product): void {
+    let max: number = -1;
+    PRODUCTS.forEach(element => {
+      if (element.id > max) {
+        max = element.id;
+      }
+    });
+    product.id = max + 1;
     PRODUCTS.push(product);
   }
 
