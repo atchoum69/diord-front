@@ -1,10 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Ajout de ce stype pour firefox : TODO voir si ca marche sous Chrome */
-nav.navbar-default {
-  padding-top: 0;
-}
-
 body {
   background-color: #f2f4f5!important;
 }
@@ -93,6 +88,8 @@ body.theme-green #theme-header .navbar-default .nav-burger {
 
 #theme-header .navbar-default {
   height: 80px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #theme-header .navbar-default .nav-burger {
