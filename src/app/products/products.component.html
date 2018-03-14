@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
+      <tr *ngFor="let product of products" [routerLink]="['/product/detail', product.id]">
         <th scope="row">{{product.idAppli}}</th>
         <td>{{product.name}}</td>
         <td class="hidden-xs-down">{{product.description}}</td>

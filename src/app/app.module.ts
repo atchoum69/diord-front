@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { DetailProductComponent } from './detail-product/detail-product.component';
 
 // services
 import { ProductService } from './service/product.service';
@@ -22,7 +23,8 @@ import { AppConfig } from './app.config';
   declarations: [
     AppComponent,
     ProductsComponent,
-    EditProductComponent
+    EditProductComponent,
+    DetailProductComponent
   ],
   imports: [
     BrowserModule,
