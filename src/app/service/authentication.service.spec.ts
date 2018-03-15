@@ -3,9 +3,9 @@ import { TestBed, inject } from '@angular/core/testing';
 import { Http, BaseRequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { ProductService } from './product.service';
+import { AuthenticationService } from './authentication.service';
 
-describe('ProductService', () => {
+describe('AuthenticationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -18,13 +18,13 @@ describe('ProductService', () => {
           },
           deps: [MockBackend, BaseRequestOptions]
         },
-        ProductService,
-        { provide: "urlServiceAppli", useValue: "" }
+        AuthenticationService,
+        { provide: "urlServiceAuthentification", useValue: "" }
       ]
     });
   });
 
-  it('should be created', inject([ProductService], (service: ProductService) => {
+  it('should be created', inject([AuthenticationService], (service: AuthenticationService) => {
     expect(service).toBeTruthy();
   }));
 });
