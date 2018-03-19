@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Location } from '@angular/common';
 
 import { Product } from '../model/product';
 
@@ -18,16 +18,16 @@ export class EditProductComponent implements OnInit {
 
   product: Product;
 
-  modeCreation: boolean = false;
+  modeCreation = false;
 
   constructor(private productService: ProductService,
     private authenticationService: AuthenticationService,
-    @Inject("modeMock") private modeBouchon: boolean,
+    @Inject('modeMock') private modeBouchon: boolean,
     private route: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit() {
-    let id: number = +this.route.snapshot.paramMap.get('id');
+    const id: number = +this.route.snapshot.paramMap.get('id');
     if (id === 0) {
       // on ne trouve pas le produit, donc on est en mode creation
       this.modeCreation = true;

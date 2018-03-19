@@ -19,7 +19,7 @@ describe('AuthenticationService', () => {
           deps: [MockBackend, BaseRequestOptions]
         },
         AuthenticationService,
-        { provide: "urlServiceAuthentification", useValue: "" }
+        { provide: 'urlServiceAuthentification', useValue: '' }
       ]
     });
   });

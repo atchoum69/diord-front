@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // composants
@@ -35,9 +35,9 @@ import { AppConfig } from './app.config';
   providers: [
     ProductService,
     AuthenticationService,
-    { provide: "urlServiceAuthentification", useValue: AppConfig.URL_API_AUTHENTIFICATION },
-    { provide: "urlServiceAppli", useValue: AppConfig.URL_API_MICROSERVICE_APPLI },
-    { provide: "modeMock", useValue: AppConfig.MODE_MOCK_ENABLED },
+    { provide: 'urlServiceAuthentification', useValue: AppConfig.URL_API_AUTHENTIFICATION },
+    { provide: 'urlServiceAppli', useValue: AppConfig.URL_API_MICROSERVICE_APPLI },
+    { provide: 'modeMock', useValue: AppConfig.MODE_MOCK_ENABLED },
   ],
   bootstrap: [AppComponent]
 })

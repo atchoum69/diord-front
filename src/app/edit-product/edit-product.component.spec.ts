@@ -31,8 +31,8 @@ import { FormsModule } from '@angular/forms';
 
 describe('EditProductComponent', () => {
   let component: EditProductComponent;
-  let mockProductService: MockProductService;
-  let mockAuthService: MockAuthService;
+  const mockProductService: MockProductService = new MockProductService();
+  const mockAuthService: MockAuthService = new MockAuthService();
   let fixture: ComponentFixture<EditProductComponent>;
 
   beforeEach(async(() => {
@@ -41,7 +41,7 @@ describe('EditProductComponent', () => {
       providers: [
           { provide: ProductService, useValue: mockProductService },
           { provide: AuthenticationService, useValue: mockAuthService },
-          { provide: "modeMock", useValue: true }
+          { provide: 'modeMock', useValue: true }
       ],
       imports: [ FormsModule, RouterTestingModule ]
     })

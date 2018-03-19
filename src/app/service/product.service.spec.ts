@@ -19,7 +19,7 @@ describe('ProductService', () => {
           deps: [MockBackend, BaseRequestOptions]
         },
         ProductService,
-        { provide: "urlServiceAppli", useValue: "" }
+        { provide: 'urlServiceAppli', useValue: '' }
       ]
     });
   });

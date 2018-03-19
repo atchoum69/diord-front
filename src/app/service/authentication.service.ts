@@ -7,20 +7,20 @@ import 'rxjs/add/operator/toPromise'
 export class AuthenticationService {
   public token: string;
 
-  constructor(private http: Http, @Inject("urlServiceAuthentification") private authenticateUrl: string) {
+  constructor(private http: Http, @Inject('urlServiceAuthentification') private authenticateUrl: string) {
     // set token if saved in local storage
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
   }
 
   login(username: string, password: string): Promise<boolean> {
-    //console.log("authenticate:login");
+    // console.log("authenticate:login");
 
-    let body = JSON.stringify({ username: username, password: password });
-    let headers = new Headers({
+    const body = JSON.stringify({ username: username, password: password });
+    const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    let options = new RequestOptions({
+    const options = new RequestOptions({
       headers: headers,
       body: body,
       method: RequestMethod.Post,
@@ -31,8 +31,8 @@ export class AuthenticationService {
       .toPromise()
       .then(response => {
         // login successful if there's a jwt token in the response
-        let token = response.json() && response.json().id_token;
-        //console.log("authenticate:ok " + token);
+        const token = response.json() && response.json().id_token;
+        // console.log("authenticate:ok " + token);
         if (token) {
           // set token property
           this.token = token;
@@ -43,7 +43,7 @@ export class AuthenticationService {
           // return true to indicate successful login
           return true;
         } else {
-          //console.log("authenticate:ko " + token);
+          // console.log("authenticate:ko " + token);
           // return false to indicate failed login
           return false;
         }
