@@ -7,8 +7,8 @@ describe('diord-front App', () => {
     page = new DiordFrontPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display h2 title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual('Liste des produits');
   });
 });

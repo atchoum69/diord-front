@@ -41,7 +41,7 @@ describe('ProductComponent', () => {
           { provide: AuthenticationService, useValue: mockAuthService },
           { provide: 'modeMock', useValue: true }
       ],
-      imports: [ RouterTestingModule ] 
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   }));
