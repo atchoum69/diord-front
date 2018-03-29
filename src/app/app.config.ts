@@ -9,4 +9,7 @@ export class AppConfig {
 
   // Url du microservice des produits (appli)
   public static URL_API_MICROSERVICE_APPLI = 'http://localhost:8081/api/produits';
+
+  // Url du microservice des versions (versions)
+  public static URL_API_MICROSERVICE_VERSION = 'http://localhost:8082/api/versions';
 }

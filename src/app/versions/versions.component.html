@@ -1,3 +1,25 @@
-<p>
-  versions works!
-</p>
+<h2>Liste des version de l'appli {{idAppli}}</h2>
+<div class="col-12">
+  <table class="table table-hover">
+    <thead class="table-inverse">
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th class="hidden-xs-down">Moteur</th>
+        <th>Version livraison</th>
+        <th>Dernier paquet</th>
+        <th>Dernier paquet J2EE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let version of versions">
+        <th scope="row">{{version.idAppli}}</th>
+        <td>{{version.versionAppli}}</td>
+        <td class="hidden-xs-down">{{version.idEngine}}</td>
+        <td>{{version.versionLivraison}}</td>
+        <td>{{version.dernierLivrable}}</td>
+        <td>{{version.dernierLivrableJ2EE}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

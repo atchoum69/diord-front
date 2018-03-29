@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
+import { Version } from '../model/version';
+
+import { VersionService } from '../service/version.service';
+import { VersionMockService } from '../service/version-mock.service';
+import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationMockService } from '../service/authentication-mock.service';
 
 @Component({
   selector: 'app-versions',
@@ -7,9 +15,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VersionsComponent implements OnInit {
 
-  constructor() { }
+  versions: Version[];
+  idAppli: string;
+
+  constructor(private versionService: VersionService,
+    private authenticationService: AuthenticationService,
+    @Inject('modeMock') private modeBouchon: boolean,
+    private route: ActivatedRoute) {
+      if (this.modeBouchon) {
+        this.authenticationService = new AuthenticationMockService();
+        this.versionService = new VersionMockService();
+      }
+    }
+
+  getVersions(idAppli: string): void {
+    this.authenticationService.login('admin', 'admin').then(response => {
+      this.versionService.getVersions(this.authenticationService.token, idAppli).then(versions => {
+        // console.log(products);
+        this.versions = versions
+      });
+    });
+  }
 
   ngOnInit() {
+    this.idAppli = this.route.snapshot.paramMap.get('idAppli');
+    this.getVersions(this.idAppli);
   }
 
 }
