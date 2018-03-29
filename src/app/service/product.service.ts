@@ -4,16 +4,11 @@ import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/toPromise'
 
 import { Product } from '../model/product';
-import { PRODUCTS } from './mock-products';
 
 @Injectable()
 export class ProductService {
 
   constructor(private http: Http, @Inject('urlServiceAppli') private urlService: string) { }
-
-  getMockProducts(): Promise<Product[]> {
-    return Promise.resolve(PRODUCTS);
-  }
 
   getProducts(token: string): Promise<Product[]> {
     // console.log('getProducts : ' + this.urlService);
@@ -37,10 +32,6 @@ export class ProductService {
         return Promise.resolve(response.json() as Product[])
       })
       .catch(this.handleError);
-  }
-
-  getMockProduct(id: number): Promise<Product> {
-    return Promise.resolve(PRODUCTS.find(product => product.id === id));
   }
 
   getProduct(token: string, id: number): Promise<Product> {
@@ -68,13 +59,6 @@ export class ProductService {
       .catch(this.handleError);
   }
 
-  updateMockProduct(product: Product): void {
-    const searchIndex = PRODUCTS.findIndex(curProduct => curProduct.id === product.id);
-    if (searchIndex > -1) {
-      PRODUCTS.splice(searchIndex, 1, product);
-    }
-  }
-
   updateProduct(token: string, product: Product): Promise<Product> {
     // console.log('updateProduct : ' + this.urlService);
 
@@ -100,17 +84,6 @@ export class ProductService {
         return Promise.resolve(response.json() as Product)
       })
       .catch(this.handleError);
-  }
-
-  createMockProduct(product: Product): void {
-    let max: number = -1;
-    PRODUCTS.forEach(element => {
-      if (element.id > max) {
-        max = element.id;
-      }
-    });
-    product.id = max + 1;
-    PRODUCTS.push(product);
   }
 
   createProduct(token: string, product: Product): Promise<Product> {

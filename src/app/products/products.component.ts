@@ -3,7 +3,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Product } from '../model/product';
 
 import { ProductService } from '../service/product.service';
+import { ProductMockService } from '../service/product-mock.service';
+
 import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationMockService } from '../service/authentication-mock.service';
 
 @Component({
   selector: 'app-products',
@@ -15,19 +18,20 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private authenticationService: AuthenticationService,
-    @Inject('modeMock') private modeBouchon: boolean) { }
+    @Inject('modeMock') private modeBouchon: boolean) {
+    if (this.modeBouchon) {
+      this.productService = new ProductMockService();
+      this.authenticationService = new AuthenticationMockService();
+    }
+  }
 
   getProducts(): void {
-    if (this.modeBouchon) {
-      this.productService.getMockProducts().then(products => this.products = products);
-    } else {
-      this.authenticationService.login('admin', 'admin').then(response => {
-        this.productService.getProducts(this.authenticationService.token).then(products => {
-          // console.log(products);
-          this.products = products
-        });
+    this.authenticationService.login('admin', 'admin').then(response => {
+      this.productService.getProducts(this.authenticationService.token).then(products => {
+        // console.log(products);
+        this.products = products
       });
-    }
+    });
   }
 
   ngOnInit() {

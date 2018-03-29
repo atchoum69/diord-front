@@ -5,7 +5,10 @@ import { Location } from '@angular/common';
 import { Product } from '../model/product';
 
 import { ProductService } from '../service/product.service';
+import { ProductMockService } from '../service/product-mock.service';
+
 import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationMockService } from '../service/authentication-mock.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -24,7 +27,12 @@ export class EditProductComponent implements OnInit {
     private authenticationService: AuthenticationService,
     @Inject('modeMock') private modeBouchon: boolean,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location) {
+    if (this.modeBouchon) {
+      this.productService = new ProductMockService();
+      this.authenticationService = new AuthenticationMockService();
+    }
+  }
 
   ngOnInit() {
     const id: number = +this.route.snapshot.paramMap.get('id');
@@ -38,13 +46,8 @@ export class EditProductComponent implements OnInit {
   }
 
   getProduit(id: number): void {
-    if (this.modeBouchon) {
-      this.productService.getMockProduct(id)
-      .then(product => this.product = product);
-    } else {
-      this.productService.getProduct(this.authenticationService.token, id)
-      .then(product => this.product = product);
-    }
+    this.productService.getProduct(this.authenticationService.token, id)
+    .then(product => this.product = product);
   }
 
   goBack(): void {
@@ -52,22 +55,14 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct(): void {
-    if (this.modeBouchon) {
-      this.productService.updateMockProduct(this.product);
-    } else {
-      this.productService.updateProduct(this.authenticationService.token,
-        this.product);
-    }
+    this.productService.updateProduct(this.authenticationService.token,
+      this.product);
     this.location.back();
   }
 
   createProduct(): void {
-    if (this.modeBouchon) {
-      this.productService.createMockProduct(this.product);
-    } else {
-      this.productService.createProduct(this.authenticationService.token,
-        this.product);
-    }
+    this.productService.createProduct(this.authenticationService.token,
+      this.product);
     this.location.back();
   }
 

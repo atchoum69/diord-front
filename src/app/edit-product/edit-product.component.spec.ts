@@ -7,40 +7,23 @@ import { EditProductComponent } from './edit-product.component';
 import { RouterTestingModule } from '@angular/router/testing'
 
 import { ProductService } from '../service/product.service';
+import { ProductMockService } from '../service/product-mock.service';
+
 import { AuthenticationService } from '../service/authentication.service';
-
-import { Product } from '../model/product';
-import { PRODUCTS } from '../service/mock-products';
-
-export class MockProductService {
-
-  getMockProduct(id: number): Promise<Product> {
-    return Promise.resolve(PRODUCTS.find(product => product.id === id));
-  }
-
-  getProduct(token: string, id: number): Promise<Product> {
-    return Promise.resolve(PRODUCTS.find(product => product.id === id));
-  }
-}
-
-export class MockAuthService {
-
-}
+import { AuthenticationMockService } from '../service/authentication-mock.service';
 
 import { FormsModule } from '@angular/forms';
 
 describe('EditProductComponent', () => {
   let component: EditProductComponent;
-  const mockProductService: MockProductService = new MockProductService();
-  const mockAuthService: MockAuthService = new MockAuthService();
   let fixture: ComponentFixture<EditProductComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ EditProductComponent ],
       providers: [
-          { provide: ProductService, useValue: mockProductService },
-          { provide: AuthenticationService, useValue: mockAuthService },
+          { provide: ProductService, useValue: new ProductMockService() },
+          { provide: AuthenticationService, useValue: new AuthenticationMockService() },
           { provide: 'modeMock', useValue: true }
       ],
       imports: [ FormsModule, RouterTestingModule ]
