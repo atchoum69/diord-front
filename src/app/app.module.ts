@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { DetailProductComponent } from './detail-product/detail-product.component';
+import { VersionsComponent } from './versions/versions.component';
 
 // services
 import { ProductService } from './service/product.service';
@@ -24,7 +24,7 @@ import { AppConfig } from './app.config';
     AppComponent,
     ProductsComponent,
     EditProductComponent,
-    DetailProductComponent
+    VersionsComponent
   ],
   imports: [
     BrowserModule,
