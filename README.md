@@ -1,6 +1,13 @@
 # DiordFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0 (initially).
+
+But, this project was migrated to a new version of differents components.
+
+Actually, this project use : 
+- Npm : [5.7.1](https://github.com/npm/npm/releases/tag/v5.7.1)
+- Angular : [5.2.8](https://github.com/angular/angular/blob/master/CHANGELOG.md)
+- Angular CLI : [1.7.3](https://github.com/angular/angular-cli/releases/tag/v1.7.3)
 
 ## Development server
 
