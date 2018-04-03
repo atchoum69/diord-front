@@ -40,4 +40,56 @@ describe('EditProductComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have getProduct function', () => {
+    expect(component.getProduit).toBeTruthy();
+  });
+
+  it('should have createProduct function', () => {
+    expect(component.createProduct).toBeTruthy();
+  });
+
+  it('should have updateProduct function', () => {
+    expect(component.updateProduct).toBeTruthy();
+  });
+
+  it('should return product', () => {
+    fixture.detectChanges();
+
+    // Call method
+    component.getProduit(4);
+
+    // Asynchrone return
+    fixture.whenStable().then(() => {
+      // Assert
+      fixture.detectChanges();
+
+      expect(component.product).toBeTruthy();
+      expect(component.product.id).toEqual(4);
+      expect(component.product.idAppli).toBe('CRI');
+      expect(component.product.name).toBe('cri');
+      expect(component.product.description).toBe('Documents Dialogue pour CRISTAL');
+      expect(component.product.codePaquet).toBe('cr');
+    });
+  });
+
+  xit('should return product on ngInit', () => {
+    fixture.detectChanges();
+
+    // Call method
+    component.ngOnInit();
+
+    // Asynchrone return
+    fixture.whenStable().then(() => {
+      // Assert
+      fixture.detectChanges();
+
+      expect(component.product).toBeTruthy();
+      expect(component.product.id).toEqual(4);
+      expect(component.product.idAppli).toBe('CRI');
+      expect(component.product.name).toBe('cri');
+      expect(component.product.description).toBe('Documents Dialogue pour CRISTAL');
+      expect(component.product.codePaquet).toBe('cr');
+    });
+  });
 });

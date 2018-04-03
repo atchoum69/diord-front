@@ -38,4 +38,27 @@ describe('ProductComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have getProducts function', () => {
+    expect(component.getProducts).toBeTruthy();
+  });
+
+  it('should return products', () => {
+    // Initial value
+    expect(component.products).toBeFalsy();
+
+    fixture.detectChanges();
+
+    // Call method
+    component.ngOnInit();
+
+    // Asynchrone return
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+
+      // Assert
+      expect(component.products).toBeTruthy();
+      expect(component.products.length).toBeGreaterThan(0);
+    });
+  });
 });
