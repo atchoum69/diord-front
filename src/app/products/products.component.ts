@@ -17,12 +17,7 @@ export class ProductsComponent implements OnInit {
   products: Product[];
 
   constructor(private productService: ProductService,
-    private authenticationService: AuthenticationService,
-    @Inject('modeMock') private modeBouchon: boolean) {
-    if (this.modeBouchon) {
-      this.productService = new ProductMockService();
-      this.authenticationService = new AuthenticationMockService();
-    }
+    private authenticationService: AuthenticationService) {
   }
 
   getProducts(): void {

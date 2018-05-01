@@ -9,10 +9,8 @@ import { ProductsComponent } from './products/products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { VersionsComponent } from './versions/versions.component';
 
-// services
-import { ProductService } from './service/product.service';
-import { AuthenticationService } from './service/authentication.service';
-import { VersionService } from './service/version.service';
+// services providers
+import { AuthenticationServiceProvider, ProductServiceProvider, VersionServiceProvider } from './service/service.provider'
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
@@ -34,13 +32,12 @@ import { AppConfig } from './app.config';
     AppRoutingModule
   ],
   providers: [
-    ProductService,
-    AuthenticationService,
-    VersionService,
+    AuthenticationServiceProvider,
+    ProductServiceProvider,
+    VersionServiceProvider,
     { provide: 'urlServiceAuthentification', useValue: AppConfig.URL_API_AUTHENTIFICATION },
     { provide: 'urlServiceAppli', useValue: AppConfig.URL_API_MICROSERVICE_APPLI },
     { provide: 'urlServiceVersion', useValue: AppConfig.URL_API_MICROSERVICE_VERSION },
-    { provide: 'modeMock', useValue: AppConfig.MODE_MOCK_ENABLED },
   ],
   bootstrap: [AppComponent]
 })

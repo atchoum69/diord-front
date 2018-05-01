@@ -25,13 +25,8 @@ export class EditProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private authenticationService: AuthenticationService,
-    @Inject('modeMock') private modeBouchon: boolean,
     private route: ActivatedRoute,
     private location: Location) {
-    if (this.modeBouchon) {
-      this.productService = new ProductMockService();
-      this.authenticationService = new AuthenticationMockService();
-    }
   }
 
   ngOnInit() {

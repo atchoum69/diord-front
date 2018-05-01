@@ -20,12 +20,7 @@ export class VersionsComponent implements OnInit {
 
   constructor(private versionService: VersionService,
     private authenticationService: AuthenticationService,
-    @Inject('modeMock') private modeBouchon: boolean,
     private route: ActivatedRoute) {
-      if (this.modeBouchon) {
-        this.authenticationService = new AuthenticationMockService();
-        this.versionService = new VersionMockService();
-      }
     }
 
   getVersions(idAppli: string): void {
