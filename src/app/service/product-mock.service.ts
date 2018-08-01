@@ -30,7 +30,7 @@ export class ProductMockService extends ProductService {
   }
 
   createProduct(token: string, product: Product): Promise<Product> {
-    let max: number = -1;
+    let max = -1;
     PRODUCTS.forEach(element => {
       if (element.id > max) {
         max = element.id;

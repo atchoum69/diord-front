@@ -6,8 +6,8 @@ But, this project was migrated to a new version of differents components.
 
 Actually, this project use : 
 - Npm : [5.7.1](https://github.com/npm/npm/releases/tag/v5.7.1)
-- Angular : [5.2.8](https://github.com/angular/angular/blob/master/CHANGELOG.md)
-- Angular CLI : [1.7.3](https://github.com/angular/angular-cli/releases/tag/v1.7.3)
+- Angular : [6.1.0](https://github.com/angular/angular/blob/6.1.0/CHANGELOG.md)
+- Angular CLI : [6.1.2](https://github.com/angular/angular-cli/releases/tag/v6.1.2)
 
 ## Development server
 
