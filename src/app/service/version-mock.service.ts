@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import 'rxjs/add/operator/toPromise'
+
 
 import { Version } from '../model/version';
 import { VERSIONS } from './mock-versions';

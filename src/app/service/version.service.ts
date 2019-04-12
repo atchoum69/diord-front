@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 
 import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import 'rxjs/add/operator/toPromise'
+
 
 import { Version } from '../model/version';
 
