@@ -56,6 +56,8 @@ describe('EditProductComponent', () => {
   it('should return product', () => {
     fixture.detectChanges();
 
+    expect(component.product).toBeTruthy();
+
     // Call method
     component.getProduit(4);
 
@@ -75,6 +77,8 @@ describe('EditProductComponent', () => {
 
   xit('should return product on ngInit', () => {
     fixture.detectChanges();
+
+    expect(component.product).toBeTruthy();
 
     // Call method
     component.ngOnInit();

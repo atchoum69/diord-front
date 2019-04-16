@@ -25,7 +25,7 @@ export class EditProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private authenticationService: AuthenticationService,
-              private route: ActivatedRoute,
+              public route: ActivatedRoute,
               private location: Location) {
   }
 
