@@ -19,15 +19,15 @@ export class VersionsComponent implements OnInit {
   idAppli: string;
 
   constructor(private versionService: VersionService,
-    private authenticationService: AuthenticationService,
-    private route: ActivatedRoute) {
+              private authenticationService: AuthenticationService,
+              private route: ActivatedRoute) {
     }
 
   getVersions(idAppli: string): void {
     this.authenticationService.login('admin', 'admin').then(response => {
       this.versionService.getVersions(this.authenticationService.token, idAppli).then(versions => {
         // console.log(products);
-        this.versions = versions
+        this.versions = versions;
       });
     });
   }

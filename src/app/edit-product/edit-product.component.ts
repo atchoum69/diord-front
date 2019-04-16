@@ -24,9 +24,9 @@ export class EditProductComponent implements OnInit {
   modeCreation = false;
 
   constructor(private productService: ProductService,
-    private authenticationService: AuthenticationService,
-    private route: ActivatedRoute,
-    private location: Location) {
+              private authenticationService: AuthenticationService,
+              private route: ActivatedRoute,
+              private location: Location) {
   }
 
   ngOnInit() {

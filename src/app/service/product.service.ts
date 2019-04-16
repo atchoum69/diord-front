@@ -21,7 +21,7 @@ export class ProductService {
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response)
+        return Promise.resolve(response);
       })
       .catch(this.handleError);
   }
@@ -38,7 +38,7 @@ export class ProductService {
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response)
+        return Promise.resolve(response);
       })
       .catch(this.handleError);
   }
@@ -57,7 +57,7 @@ export class ProductService {
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response)
+        return Promise.resolve(response);
       })
       .catch(this.handleError);
   }
@@ -76,7 +76,7 @@ export class ProductService {
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response)
+        return Promise.resolve(response);
       })
       .catch(this.handleError);
   }

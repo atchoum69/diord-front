@@ -1,4 +1,4 @@
 
 export class AuthenticationToken {
-    id_token: string;
+    idToken: string;
 }

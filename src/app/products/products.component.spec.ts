@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import 'rxjs/add/operator/toPromise'
+import 'rxjs/add/operator/toPromise';
 
 import { ProductsComponent } from './products.component';
 
-import { RouterTestingModule } from '@angular/router/testing'
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductService } from '../service/product.service';
 import { ProductMockService } from '../service/product-mock.service';

@@ -22,7 +22,7 @@ export class VersionService {
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response)
+        return Promise.resolve(response);
       })
       .catch(this.handleError);
   }

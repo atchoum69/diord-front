@@ -17,21 +17,21 @@ export class AuthenticationService {
   login(username: string, password: string): Promise<boolean> {
     // console.log("authenticate:login");
 
-    const body = JSON.stringify({ username: username, password: password });
+    const body = JSON.stringify({username, password });
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http.post<AuthenticationToken>(this.authenticateUrl, body, {headers})
       .toPromise()
       .then(response => {
         // login successful if there's a jwt token in the response
-        const token = response.id_token;
+        const token = response.idToken;
         // console.log("authenticate:ok " + token);
         if (token) {
           // set token property
           this.token = token;
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username, token }));
 
           // return true to indicate successful login
           return true;

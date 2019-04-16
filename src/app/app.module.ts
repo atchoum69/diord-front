@@ -10,7 +10,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { VersionsComponent } from './versions/versions.component';
 
 // services providers
-import { AuthenticationServiceProvider, ProductServiceProvider, VersionServiceProvider } from './service/service.provider'
+import { AuthenticationServiceProvider, ProductServiceProvider, VersionServiceProvider } from './service/service.provider';
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
