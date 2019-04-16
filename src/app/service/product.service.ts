@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 
-import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 import { Product } from '../model/product';
@@ -8,28 +8,20 @@ import { Product } from '../model/product';
 @Injectable()
 export class ProductService {
 
-  constructor(private http: Http, @Inject('urlServiceAppli') private urlService: string) { }
+  constructor(private http: HttpClient, @Inject('urlServiceAppli') private urlService: string) { }
 
   getProducts(token: string): Promise<Product[]> {
     // console.log('getProducts : ' + this.urlService);
 
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token);
 
-    const options = new RequestOptions({
-      headers: headers,
-      body: '',
-      method: RequestMethod.Get,
-      url: this.urlService
-    });
-
-    return this.http.get(this.urlService, options)
+    return this.http.get<Product[]>(this.urlService, {headers})
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response.json() as Product[])
+        return Promise.resolve(response)
       })
       .catch(this.handleError);
   }
@@ -38,23 +30,15 @@ export class ProductService {
     const url = this.urlService + '/' + id;
     // console.log('getProduct : ' + url);
 
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token);
 
-    const options = new RequestOptions({
-      headers: headers,
-      body: '',
-      method: RequestMethod.Get,
-      url: url
-    });
-
-    return this.http.get(url, options)
+    return this.http.get<Product>(url, {headers})
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response.json() as Product)
+        return Promise.resolve(response)
       })
       .catch(this.handleError);
   }
@@ -62,26 +46,18 @@ export class ProductService {
   updateProduct(token: string, product: Product): Promise<Product> {
     // console.log('updateProduct : ' + this.urlService);
 
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer ' + token);
 
     const body = JSON.stringify(product);
 
-    const options = new RequestOptions({
-      headers: headers,
-      body: body,
-      method: RequestMethod.Put,
-      url: this.urlService
-    });
-
-    return this.http.put(this.urlService, body, options)
+    return this.http.put<Product>(this.urlService, body, {headers})
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response.json() as Product)
+        return Promise.resolve(response)
       })
       .catch(this.handleError);
   }
@@ -89,26 +65,18 @@ export class ProductService {
   createProduct(token: string, product: Product): Promise<Product> {
     // console.log('createProduct : ' + this.urlService);
 
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer ' + token);
 
     const body = JSON.stringify(product);
 
-    const options = new RequestOptions({
-      headers: headers,
-      body: body,
-      method: RequestMethod.Post,
-      url: this.urlService
-    });
-
-    return this.http.post(this.urlService, body, options)
+    return this.http.post<Product>(this.urlService, body, {headers})
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response.json() as Product)
+        return Promise.resolve(response)
       })
       .catch(this.handleError);
   }

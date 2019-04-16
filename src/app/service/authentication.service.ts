@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthenticationToken } from 'app/model/AuthenticationToken';
 
 
 
@@ -7,7 +8,7 @@ import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 export class AuthenticationService {
   public token: string;
 
-  constructor(private http: Http, @Inject('urlServiceAuthentification') private authenticateUrl: string) {
+  constructor(private http: HttpClient, @Inject('urlServiceAuthentification') private authenticateUrl: string) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
@@ -17,21 +18,13 @@ export class AuthenticationService {
     // console.log("authenticate:login");
 
     const body = JSON.stringify({ username: username, password: password });
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    const options = new RequestOptions({
-      headers: headers,
-      body: body,
-      method: RequestMethod.Post,
-      url: this.authenticateUrl
-    });
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.http.post(this.authenticateUrl, body, options)
+    return this.http.post<AuthenticationToken>(this.authenticateUrl, body, {headers})
       .toPromise()
       .then(response => {
         // login successful if there's a jwt token in the response
-        const token = response.json() && response.json().id_token;
+        const token = response.id_token;
         // console.log("authenticate:ok " + token);
         if (token) {
           // set token property
