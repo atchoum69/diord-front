@@ -1,36 +1,28 @@
 import { Injectable, Inject } from '@angular/core';
 
-import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import 'rxjs/add/operator/toPromise'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 import { Version } from '../model/version';
 
 @Injectable()
 export class VersionService {
 
-  constructor(private http: Http, @Inject('urlServiceVersion') private urlService: string) { }
+  constructor(private http: HttpClient, @Inject('urlServiceVersion') private urlService: string) { }
 
   getVersions(token: string, idAppli: string): Promise<Version[]> {
     const url = this.urlService + '/' + idAppli;
     // console.log('getVersions : ' + url);
 
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + token);
 
-    const options = new RequestOptions({
-      headers: headers,
-      body: '',
-      method: RequestMethod.Get,
-      url: url
-    });
-
-    return this.http.get(url, options)
+    return this.http.get<Version[]>(url, {headers})
       .toPromise()
       .then(response => {
         // console.log(response.json());
-        return Promise.resolve(response.json() as Version[])
+        return Promise.resolve(response);
       })
       .catch(this.handleError);
   }

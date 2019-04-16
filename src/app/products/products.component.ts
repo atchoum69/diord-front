@@ -17,14 +17,14 @@ export class ProductsComponent implements OnInit {
   products: Product[];
 
   constructor(private productService: ProductService,
-    private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService) {
   }
 
   getProducts(): void {
     this.authenticationService.login('admin', 'admin').then(response => {
       this.productService.getProducts(this.authenticationService.token).then(products => {
         // console.log(products);
-        this.products = products
+        this.products = products;
       });
     });
   }

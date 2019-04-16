@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 // Services
 import { AuthenticationService } from './authentication.service';
@@ -12,7 +12,7 @@ import { VersionMockService } from './version-mock.service';
 import { AppConfig } from '../app.config';
 
 // Factory et provider pour l'authentification
-const authServiceFactory = (http: Http, urlServiceAuthentification: string) => {
+const authServiceFactory = (http: HttpClient, urlServiceAuthentification: string) => {
     if (AppConfig.MODE_MOCK_ENABLED) {
         return new AuthenticationMockService();
     } else {
@@ -22,11 +22,11 @@ const authServiceFactory = (http: Http, urlServiceAuthentification: string) => {
 export let AuthenticationServiceProvider = {
     provide: AuthenticationService,
     useFactory: authServiceFactory,
-    deps: [Http, 'urlServiceAuthentification']
+    deps: [HttpClient, 'urlServiceAuthentification']
 };
 
 // Factory et provider pour les produits
-const productServiceFactory = (http: Http, urlServiceAppli: string) => {
+const productServiceFactory = (http: HttpClient, urlServiceAppli: string) => {
     if (AppConfig.MODE_MOCK_ENABLED) {
         return new ProductMockService();
     } else {
@@ -36,11 +36,11 @@ const productServiceFactory = (http: Http, urlServiceAppli: string) => {
 export let ProductServiceProvider = {
     provide: ProductService,
     useFactory: productServiceFactory,
-    deps: [Http, 'urlServiceAppli']
+    deps: [HttpClient, 'urlServiceAppli']
 };
 
 // Factory et provider pour les versions de produits
-const versionServiceFactory = (http: Http, urlServiceVersion: string) => {
+const versionServiceFactory = (http: HttpClient, urlServiceVersion: string) => {
     if (AppConfig.MODE_MOCK_ENABLED) {
         return new VersionMockService();
     } else {
@@ -50,5 +50,5 @@ const versionServiceFactory = (http: Http, urlServiceVersion: string) => {
 export let VersionServiceProvider = {
     provide: VersionService,
     useFactory: versionServiceFactory,
-    deps: [Http, 'urlServiceVersion']
+    deps: [HttpClient, 'urlServiceVersion']
 };

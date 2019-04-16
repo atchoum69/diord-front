@@ -10,7 +10,7 @@ import { ProductMockService } from '../service/product-mock.service';
 import { AuthenticationService } from '../service/authentication.service';
 import { AuthenticationMockService } from '../service/authentication-mock.service';
 
-import 'rxjs/add/operator/switchMap';
+
 
 @Component({
   selector: 'app-edit-product',
@@ -24,9 +24,9 @@ export class EditProductComponent implements OnInit {
   modeCreation = false;
 
   constructor(private productService: ProductService,
-    private authenticationService: AuthenticationService,
-    private route: ActivatedRoute,
-    private location: Location) {
+              private authenticationService: AuthenticationService,
+              public route: ActivatedRoute,
+              private location: Location) {
   }
 
   ngOnInit() {

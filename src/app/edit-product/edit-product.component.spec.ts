@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import 'rxjs/add/operator/toPromise'
+import 'rxjs/add/operator/toPromise';
 
 import { EditProductComponent } from './edit-product.component';
 
-import { RouterTestingModule } from '@angular/router/testing'
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductService } from '../service/product.service';
 import { ProductMockService } from '../service/product-mock.service';
@@ -56,6 +56,8 @@ describe('EditProductComponent', () => {
   it('should return product', () => {
     fixture.detectChanges();
 
+    expect(component.product).toBeTruthy();
+
     // Call method
     component.getProduit(4);
 
@@ -75,6 +77,8 @@ describe('EditProductComponent', () => {
 
   xit('should return product on ngInit', () => {
     fixture.detectChanges();
+
+    expect(component.product).toBeTruthy();
 
     // Call method
     component.ngOnInit();
